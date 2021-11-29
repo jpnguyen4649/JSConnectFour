@@ -4,6 +4,7 @@ var taken = 0;
 var winner = false;
 var winnerColor = "";
 var forbidden = [4, 5, 6, 11, 12, 13, 18, 19, 20, 25, 26, 27, 32, 33, 34, 39, 40, 41];
+var forbidden2 = [0, 1, 2, 7, 8, 9, 14, 15, 16, 21, 22, 23, 28, 29, 30, 35, 36, 37];
 
 function getId(event){
 	if(winner == false){
@@ -23,7 +24,7 @@ function getId(event){
 				alert("The computer won!");
 			}
 		}
-	}else if(taken==42){
+	}else if(taken==41){
 		alert("It's a draw!");
 	}
 }
@@ -72,7 +73,7 @@ function checkWin(){
 		for(let i = 0; i<cells.length-3; i++){
 			if(cells[i].getAttribute("style")==cells[i+1].getAttribute("style") && cells[i+1].getAttribute("style")==cells[i+2].getAttribute("style") && cells[i+2].getAttribute("style")==cells[i+3].getAttribute("style") && cells[i].getAttribute("style")!=null && forbidden.includes(i)==false){
 				winner = true;
-				winnerColor = cells[i].getAttribute("style");
+				winnerColor = cells[i].getAttribute("style");				
 				finished = 4;
 			}else{
 				finished++;
@@ -88,7 +89,7 @@ function checkWin(){
 			}
 		}
 		for(let k = 0; k<cells.length-24; k++){
-			if(cells[k].getAttribute("style")==cells[k+8].getAttribute("style") && cells[k+8].getAttribute("style")==cells[k+16].getAttribute("style") && cells[k+16].getAttribute("style")==cells[k+24].getAttribute("style") && cells[k].getAttribute("style")!=null){
+			if(cells[k].getAttribute("style")==cells[k+8].getAttribute("style") && cells[k+8].getAttribute("style")==cells[k+16].getAttribute("style") && cells[k+16].getAttribute("style")==cells[k+24].getAttribute("style") && cells[k].getAttribute("style")!=null && forbidden.includes(k)==false){
 				winner = true;
 				winnerColor = cells[k].getAttribute("style");
 				finished = 4;
@@ -97,7 +98,7 @@ function checkWin(){
 			}
 		}
 		for(let l = 18; l<cells.length; l++){
-			if(cells[l].getAttribute("style")==cells[l-6].getAttribute("style") && cells[l-6].getAttribute("style")==cells[l-12].getAttribute("style") && cells[l-12].getAttribute("style")==cells[l-18].getAttribute("style") && cells[l].getAttribute("style")!=null){
+			if(cells[l].getAttribute("style")==cells[l-6].getAttribute("style") && cells[l-6].getAttribute("style")==cells[l-12].getAttribute("style") && cells[l-12].getAttribute("style")==cells[l-18].getAttribute("style") && cells[l].getAttribute("style")!=null && forbidden2.includes(l)==false && forbidden.includes(l)==false){
 				winner = true;
 				winnerColor = cells[l].getAttribute("style");
 				finished = 4;
